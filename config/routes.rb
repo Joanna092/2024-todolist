@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
+  root 'static_pages#index'
+
   namespace :api do
     # Add routes below this line
-    root 'static_pages#index'
-
+    
     resources :users, only: [:create]
 
     get    'tasks/:id'                => 'tasks#show'
