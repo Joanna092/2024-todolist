@@ -1,5 +1,11 @@
 import $ from 'jquery';
 
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+
 var indexTasks = function () {
   var request = {
     type: 'GET',
@@ -22,9 +28,6 @@ var postTask = function (content) {
       type: 'POST',
       url: 'api/tasks?api_key=1',
       // Add CSRF token in headers
-      headers: {
-        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-      },
       data: {
         task: {
           content: content
