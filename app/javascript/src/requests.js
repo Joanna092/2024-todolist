@@ -6,7 +6,7 @@ $.ajaxSetup({
   }
 });
 
-var indexTasks = function () {
+export var indexTasks = function () {
   var request = {
     type: 'GET',
     url: 'api/tasks?api_key=1',
@@ -21,27 +21,22 @@ var indexTasks = function () {
   $.ajax(request);
 };
 
-indexTasks();
-
-var postTask = function (content) {
-    var request = {
-      type: 'POST',
-      url: 'api/tasks?api_key=1',
-      // Add CSRF token in headers
-      data: {
-        task: {
-          content: content
-        }
-      },
-      success: function (response) {
-        console.log(response);
-      },
-      error: function (request, errorMsg) {
-        console.log(request, errorMsg);
+export var postTask = function (content) {
+  var request = {
+    type: 'POST',
+    url: 'api/tasks?api_key=1',
+    data: {
+      task: {
+        content: content
       }
+    },
+    success: function (response) {
+      console.log(response);
+    },
+    error: function (request, errorMsg) {
+      console.log(request, errorMsg);
     }
-  
-    $.ajax(request);
-  };
-  
-  
+  }
+
+  $.ajax(request);
+};
